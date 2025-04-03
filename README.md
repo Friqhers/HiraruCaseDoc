@@ -57,7 +57,7 @@ class HIRARUCASESTUDY_API APlayerCharacter : public AHiraruCaseStudyCharacter, p
 - **GetAbilitySystemComponent**: GAS bileşenine erişim sağlar
 - **InitializeAbilities**: Varsayılan yetenekleri karaktere verir
 - **SendAbilityLocalInput**: Girdi eylemlerini yetenek sistemine iletir
-- **Interact**: Çevredeki nesnelerle etkileşime geçer
+- **Interact**: Çevredeki Interactable interface kullanan nesnelerle etkileşime geçer
 - **GetCooldownRemainingForTag**: Belirli bir yeteneğin kalan bekleme süresini döndürür
 
 ## Etkileşim Sistemi
@@ -72,6 +72,12 @@ class UInteractable : public UInterface
 {
     // Interface tanımı...
 }
+class HIRARUCASESTUDY_API IInteractable  
+{  
+public:  
+    virtual void Interact(class APlayerCharacter* InteractingPlayer) = 0;  
+    virtual FText GetInteractDisplayName() = 0;  
+};
 ```
 
 #### Ana Metodlar:
@@ -155,15 +161,15 @@ class HIRARUCASESTUDY_API APSBulletBase : public AActor
 1. Oyuncu bir tuşa basar (`FireAction`, `GrenadeAction` vb.)
 2. `SendAbilityLocalInput` metodu çağrılır
 3. `AbilitySystemComponent` ilgili yeteneği etkinleştirir
-4. Yetenek kullanılır ve `ApplyCooldown` ile bekleme süresi uygulanır
 
 ### Nesne Etkileşimi
 
 1. Oyuncu `InteractAction` tuşuna basar
 2. Karakter `Interact` metodunu çağırır
-3. Kamera yönünde bir ray trace yapılır
-4. Ray trace bir `IInteractable` nesnesine çarparsa, nesnenin `Interact` metodu çağrılır
-5. Nesne tipine göre uygun davranış gerçekleştirilir (örn. `ItemBase` için `Pickup` metodu)
+3. Eğer oyuncu client ise `ServerInteract` metodu çağırılır.
+4. Kamera yönünde bir ray trace yapılır
+5. Ray trace bir `IInteractable` nesnesine çarparsa, nesnenin `Interact` metodu çağrılır
+6. Nesne tipine göre uygun davranış gerçekleştirilir (örn. `ItemBase` için `Pickup` metodu)
 
 ### Mermi Fiziği
 
