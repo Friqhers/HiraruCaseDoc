@@ -30,8 +30,6 @@ class HIRARUCASESTUDY_API UBaseGameplayAbility : public UGameplayAbility
 #### Ana Metodlar:
 
 - **OnAvatarSet**: Yetenek bir karaktere atandığında çağrılır
-- **GetCooldownTags**: Yeteneğin bekleme süresini belirten etiketleri döndürür
-- **ApplyCooldown**: Yetenek kullanıldığında bekleme süresi uygulanır
 
 ## Karakter Sistemi
 
