@@ -1,16 +1,11 @@
 # HiraruCaseStudy Oyun Sistemi Dokümantasyonu
 
 ## İçindekiler
-- [Genel Bakış](#genel-bakış)
 - [Gameplay Ability System](#gameplay-ability-system)
 - [Karakter Sistemi](#karakter-sistemi)
 - [Etkileşim Sistemi](#etkileşim-sistemi)
 - [Silah Sistemi](#silah-sistemi)
 - [Item Sistemi](#item-sistemi)
-
-## Genel Bakış
-
-HiraruCaseStudy, Unreal Engine 5 tabanlı bir oyun projesidir. Bu dokümantasyon, projenin ana sistemlerini ve bu sistemler arasındaki etkileşimleri açıklamaktadır. Proje, Gameplay Ability System'i kullanarak yetenekler, silahlar, etkileşimli nesneler ve karakterleri yönetmektedir.
 
 ## Gameplay Ability System
 
